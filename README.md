@@ -24,15 +24,15 @@ $ bin/kafka-server-start.sh config/server.properties
 spring.kafka.consumer.bootstrap-servers: localhost:9092
 spring.kafka.consumer.group-id: cGroup
 spring.kafka.comsumer.auto-offset-rest: earlient
-spring.kafka.comsumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#spring.kafka.comsumer.value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-spring.kafka.comsumer.value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+spring.kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+# spring.kafka.consumer.value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
 
 # Producer
 spring.kafka.producer.bootstrap-servers: localhost:9092
-spring.kafka.producer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#spring.kafka.producer.value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-spring.kafka.producer.value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#spring.kafka.producer.value-serializer: org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 ```
 4. Create Kafka Topic
 5. Create Kafka Producer 
@@ -41,4 +41,5 @@ spring.kafka.producer.value-deserializer: org.springframework.kafka.support.seri
 ```
 bin/kafka-console-consumer.sh --topic name_of_topic --from-beginning --bootstrap-server localhost:9092
 ```
-8.  Create Kafka Consumer
+8.  Create Kafka String Producer and Consumer
+9.  Create Kafka Json Producer and Consumer

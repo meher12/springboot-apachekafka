@@ -13,4 +13,10 @@ public class KafkaTopicConfig {
         return TopicBuilder.name("firstguru")
                 .build();
     }
+
+    @Bean
+    public NewTopic jsonfirstguruTopic(){
+        return TopicBuilder.name("firstguru_json")
+                .build();
+    }
 }
