@@ -3,6 +3,7 @@ package net.meherguru.springbootkafkaex1.kafka;
 import net.meherguru.springbootkafkaex1.payload.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
@@ -16,6 +17,9 @@ public class KafkaProducer {
     private final Logger log = LoggerFactory.getLogger(KafkaProducer.class);
     private final KafkaTemplate<String, String> kafkaTemplate;
 
+    @Value("${spring.kafka.topic.name}")
+    private String topicName;
+
 
 
     public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
@@ -26,7 +30,7 @@ public class KafkaProducer {
         log.info(String.format("the message is %s", message));
 
         log.info("Message sent -> {} ", message);
-        kafkaTemplate.send("firstguru", message);
+        kafkaTemplate.send(topicName, message);
     }
 
 
